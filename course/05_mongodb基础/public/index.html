@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>哈哈哈哈哈哈哈哈哈哈，早起的一天</h1>
+
+  <script>
+    /*
+     * 发送异步请求 jquery的ajax axios
+     * 一般在浏览器中测试都可以用浏览器自带的fetch函数
+     * res.json() -----> 获取response的json格式
+    */
+    fetch('http://localhost:3000/products').then(res => res.json()).then(data => {
+      console.log(data);
+    })
+
+    /**
+     * 用局域网ip重新打开这个网页出现跨域问题（查找ip看wifi那）
+     *
+     * 报错信息如下：
+     * Access to fetch at 'http://localhost:3000/products' from origin 'http://192.168.0.104:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+     * If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+     *
+     * 解决方式：
+     * 项目安装cors npm i cors
+     * 在server.js中使用这个包
+    */
+  </script>
+</body>
+
+</html>
