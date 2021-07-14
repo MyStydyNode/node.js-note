@@ -12,19 +12,19 @@
 
 - 初始化 package.json
 
-  ```Script
+  ```sh
   $ npm init
   ```
 
 - 安装 express
 
-  ```Script
+  ```sh
   $ npm install express --save
   ```
 
 - 在根目录下新建 server.js,在里面写代码，用脚本执行
 
-  ```Script
+  ```sh
   $ node server.js
   ```
 
