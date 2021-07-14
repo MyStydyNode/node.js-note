@@ -22,7 +22,7 @@
   $ npm install express --save
   ```
 
-- 新建 server.js,在里面写代码，用脚本执行
+- 在根目录下新建 server.js,在里面写代码，用脚本执行
 
   ```Script
   $ node server.js
