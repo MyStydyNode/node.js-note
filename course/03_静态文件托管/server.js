@@ -28,15 +28,6 @@ app.get('/products', (req, res) => {
 })
 
 // 监听
-/**
- * 端口号,主机名，回调函数
- * (port: number, hostname:string,callback?: () => void)
- */
 app.listen(3000, () => {
   console.log('App listening on port 3000');
 })
-
-/**
- * 注意
- * 全局安装nodemon nodejs的热更新
- */
