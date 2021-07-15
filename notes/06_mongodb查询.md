@@ -1,3 +1,89 @@
+# 06_mongodb查询
+
+### 知识点
+
+#### find 方法
+
+- 查询数据库所有的数据
+
+  ```js
+  await Product.find()
+  ```
+
+##### limit 方法 
+
+  - 限制数据的条数，参数为数值类型
+
+    ```js
+    await Product.find().limit(2) //数据只有两条了
+    ```
+
+##### skip方法
+
+- 跳过数据的条数，参数为数值类型
+
+  ```js
+  await Product.find().skip(1) //数据跳过第一条了
+  ```
+
+##### skip方法和limit方法结合起来是做分页的
+
+```js
+await Product.find().skip(1).limit(2) //数据跳过第一条且只显示两条数据
+```
+
+##### where 方法
+
+- 查询条件，参数为对象类型(查询的条件)
+
+  ```js
+  await Product.find().where({
+    title: '产品2' //只有产品2的数据了
+  })
+  ```
+
+##### sort 方法
+
+- 进行数据排序,参数为对象类型
+
+  - 参数 **{字段：键值(-1/1)}**
+  - -1 表示倒叙，1 表示正序
+
+  ```js
+  await Product.find().sort({ _id: 1 }) //产品1，产品2，产品3
+  ```
+
+#### findById 方法
+
+- 通过id进行查找，查找出来是一个对象
+
+- id是客户端发送请求传过来的参数
+
+  ```js
+  /**
+   * :id 表示动态变量。后面id是任意字符，然后我们进行捕获过来，起个变量名为id,作为url的查询参数
+   * 冒号开头表示任意字符
+   */
+  app.get('/products/:id', async (req, res) => {
+    /**
+     * findById方法 通过id进行查找 查找出来是一个对象
+     * id是客户端发送请求传过来的参数
+     * req.params表示客户端发送请求的url传递过来的所有的参数
+     */
+    const data = await Product.findById(req.params.id)
+    res.send(data)
+  })
+  ```
+
+  - :id 表示动态变量。后面id是任意字符，然后我们进行捕获过来，起个变量名为id,作为url的查询参数
+  - 冒号开头表示任意字符
+  - req.params表示客户端发送请求的url传递过来的所有的参数
+
+### 总结
+
+#### server.js
+
+```js
 // 引用express
 const express = require('express') //模块化
 const app = express() // 建立express实例
@@ -81,3 +167,5 @@ app.get('/products/:id', async (req, res) => {
 app.listen(3000, () => {
   console.log('App listening on port 3000');
 })
+```
+

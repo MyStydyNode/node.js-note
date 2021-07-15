@@ -6,7 +6,7 @@
 
 ### 知识点
 
-- 启动mongodb服务
+- 在安装mongodb下的bin文件中启动mongodb服务
 
   ```sh
   $ mongod --dbpath ../data/db
@@ -106,7 +106,7 @@
 
 ##### server.js
 
-```
+```js
 // 引用express
 const express = require('express') //模块化
 const app = express() // 建立express实例
