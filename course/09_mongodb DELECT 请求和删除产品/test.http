@@ -1,0 +1,33 @@
+# GET http://localhost:3000/products
+# ###
+# GET http://localhost:3000/products/60f030fbb02de644b075fd2c
+
+@uri = http://localhost:3000/
+###
+GET {{uri}}products
+###
+GET {{uri}}products/60f030fbb02de644b075fd2c
+###
+POST {{uri}}products
+# 如果是ajax库可能不需要以下这个请求头
+Content-Type: application/json
+
+# 表示接下来发送json数据了
+# {
+#   "title":"产品4"
+# }
+{
+  "title":"产品5"
+}
+###
+PUT {{uri}}products/60f3ef1d8962e20d14099e56
+# 如果是ajax库可能不需要以下这个请求头
+Content-Type: application/json
+
+# 表示接下来发送json数据了
+# {
+#   "title":"产品55"
+# }
+{
+  "title":"产品5"
+}
