@@ -19,9 +19,11 @@ Content-Type: application/json
 {
   "title":"产品5"
 }
+
+
+
 ###
 PUT {{uri}}products/60f3ef1d8962e20d14099e56
-# 如果是ajax库可能不需要以下这个请求头
 Content-Type: application/json
 
 # 表示接下来发送json数据了
@@ -31,3 +33,12 @@ Content-Type: application/json
 {
   "title":"产品5"
 }
+
+
+
+###
+# 删除产品5
+# DELETE {{uri}}products/60f3ef1d8962e20d14099e56
+# 删除产品4
+DELETE {{uri}}products/60f3e390eca0a72dd0923f98
+## 不用发送请求参数

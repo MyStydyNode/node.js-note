@@ -35,7 +35,7 @@
 
   - 新增访问`POST` 接口
 
-    ```js
+    ```http
     PUT {{uri}}products/60f3ef1d8962e20d14099e56
     # 如果是ajax库可能不需要以下这个请求头
     Content-Type: application/json

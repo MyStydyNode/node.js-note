@@ -63,6 +63,23 @@ app.put('/products/:id', async (req, res) => {
   res.send(product)
 })
 
+/**
+ * 产品删除接口
+ * 直接用 delect接口
+ */
+app.delete('/products/:id', async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  // 删除这个产品
+  await product.remove()
+  /**
+   * 由于这个产品被删掉了，所有返回产品的详情信息就没有太大的意义了
+   * 所有一般在删除完成之后，返回一个状态
+   */
+  res.send({
+    success: true
+  })
+})
+
 
 // 监听
 app.listen(3000, () => {
