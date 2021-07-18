@@ -42,9 +42,7 @@ app.get('/products/:id', async (req, res) => {
   res.send(data)
 })
 
-/**
- * 产品新增接口
- */
+// 产品新增接口
 app.post('/products', async (req, res) => {
   // req.body表示客户用post提交的数据
   const data = req.body
@@ -52,6 +50,26 @@ app.post('/products', async (req, res) => {
   const product = await Product.create(data)
   res.send(product)
 })
+
+/**
+ * 产品修改接口
+ * 用patch/put 接口
+ * patch 表示部分修改
+ * put 表示直接整个覆盖
+ * 
+ * 如果没有那么细致，一般用put
+ */
+app.put('/products/:id', async (req, res) => {
+  // findById 方法 找到选中的产品 
+  const product = await Product.findById(req.params.id)
+  // 赋值操作 进行修改选中的产品的值
+  // product.set()
+  product.title = req.body.title
+  // 保存这个产品
+  await product.save()
+  res.send(product)
+})
+
 
 // 监听
 app.listen(3000, () => {
