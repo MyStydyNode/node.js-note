@@ -1,0 +1,26 @@
+# GET http://localhost:3000/products
+# ###
+# GET http://localhost:3000/products/60f030fbb02de644b075fd2c
+
+@uri = http://localhost:3000/
+###
+GET {{uri}}products
+###
+GET {{uri}}products/60f030fbb02de644b075fd2c
+###
+POST {{uri}}products
+# 如果是ajax库可能不需要以下这个请求头
+Content-Type: application/json
+
+# 表示接下来发送json数据了
+# {
+#   "title":"产品4"
+# }
+{
+  "title":"产品5"
+}
+
+
+#如果Content-Type: application/json 和 POST {{uri}}products格了一行，是个空对象
+#如果Content-Type: application/json 和 发送的数据 没有隔行 就会报错Header name must be a valid HTTP token ["{"]
+#总结：rest client报错 Content-Type 和 json字符串中间必须有一个空行 url和conten-type之间不能有空行

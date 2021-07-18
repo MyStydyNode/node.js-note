@@ -2,6 +2,9 @@
 const express = require('express') //模块化
 const app = express() // 建立express实例
 
+// 允许json格式提交的数据
+app.use(express.json()) // 开启 json格式的解析
+
 //引用mongoose
 const mongoose = require('mongoose') //模块化
 //连接数据库
@@ -47,6 +50,41 @@ app.get('/products/:id', async (req, res) => {
   res.send(data)
 })
 
+/**
+ * 产品新增接口
+ * 获取数据通过最简单的输入url来访问的一种get请求
+ * 录入数据，提交数据用更安全，运行数据量更大的post请求
+ */
+app.post('/products', async (req, res) => {
+  // req.body表示客户用post提交的数据
+  const data = req.body
+  // 发送的什么就返回什么
+  /**
+   * {
+   *   "title":"产品4"
+   * }
+   */
+
+  // mongodb 插入数据到数据库用create方法
+  const product = await Product.create(data)
+  /**
+   * {
+   *  "_id": "60f030fbb02de644b075fd2c",
+   *  "title": "产品3",
+   *  "__v": 0
+   * }
+   */
+  res.send(product)
+})
+
+/**
+ * 访问接口
+ * 如果用浏览器访问的话，访问的是get方法里的 /products 的路径
+ * 所以需要安装一个扩展 REST Clinet,
+ * 在vscode中用代码的方式发送http的各种请求，类似于在浏览器中使用 jquery的ajax库 axios请求接口
+ * 
+ * 或者 下载postman 软件或者浏览器插件都可以进行调试
+ */
 
 // 监听
 app.listen(3000, () => {
